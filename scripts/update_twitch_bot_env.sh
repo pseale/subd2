@@ -34,7 +34,7 @@ if [[ "$twitchchannelid" == "null" ]]; then
     exit 1
 fi
 
-sed -i .env  -e  "s/^.*export SUBD_TWITCH_BOT_USERNAME=.*$/export SUBD_TWITCH_BOT_USERNAME=$twitchusernamelowercase/"
-sed -i .env  -e  "s/^.*export SUBD_TWITCH_BOT_CHANNEL_ID=.*$/export SUBD_TWITCH_BOT_CHANNEL_ID=$twitchchannelid/"
-sed -i .env  -e  "s/^.*export SUBD_TWITCH_BOT_OAUTH=.*$/export SUBD_TWITCH_BOT_OAUTH=$useraccesstoken/"
-sed -i .env  -e  "s/^.*export SUBD_TWITCH_BOT_REFRESH=.*$/export SUBD_TWITCH_BOT_REFRESH=$refreshtoken/"
+sed -i .env  -e  "s/^.*export SUBD2_USERNAME=.*$/export SUBD2_USERNAME=$twitchusernamelowercase/"
+sed -i .env  -e  "s/^.*export SUBD2_CHANNEL_ID=.*$/export SUBD2_CHANNEL_ID=$twitchchannelid/"
+sed -i .env  -e  "s/^.*export SUBD2_OAUTH_TOKEN=.*$/export SUBD2_OAUTH_TOKEN=$useraccesstoken/"
+sed -i .env  -e  "s/^.*export SUBD2_REFRESH_TOKEN=.*$/export SUBD2_REFRESH_TOKEN=$refreshtoken/"
