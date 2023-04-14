@@ -20,6 +20,6 @@ fn main() {
         timestamp : timestamp,
         timestampString : timestampString
     };
-    println!("{:?}",a);
+    println!("env var is: {}", dotenv::var("TEMP").unwrap());
     println!("{}", serde_json::to_string(&a).unwrap());
 }
