@@ -3,7 +3,6 @@ use reqwest::Client as ReqwestClient;
 use reqwest::Url;
 use tokio_tungstenite::tungstenite;
 use twitch_api::helix::HelixClient;
-use twitch_api::tmi::UserId;
 use twitch_api::twitch_oauth2::{AccessToken, UserToken};
 
 async fn open_websocket(
