@@ -16,3 +16,6 @@ Cargo.lock
 
 # avoid committing secrets
 .env
+
+# jetbrains rust plugin
+.idea/
