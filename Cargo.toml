@@ -7,9 +7,12 @@ edition = "2021"
 [dependencies]
 chrono = "0.4.24"
 dotenv = "0.15.0"
+eyre = "0.6.8"
 reqwest = "0.11.16"
 serde = { version = "1.0.160", features = ["derive"] }
 serde_json = "1.0.96"
 tokio = { version = "1.27.0", features = ["full"] }
+tokio-tungstenite = "0.18.0"
 twitch_api = { version = "0.7.0-rc.4", features = ["all", "reqwest"] }
 twitch_oauth2 = { version = "0.11.1", features = ["all"] }
+websocket = "0.26.5"
