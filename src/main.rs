@@ -49,7 +49,7 @@ async fn main() {
                 println!("Channel: {:?}", channel);
 
                 let connect_url = twitch_api::TWITCH_EVENTSUB_WEBSOCKET_URL.clone();
-                let broadcaster_id = 792462754;
+                let broadcaster_id = channel.broadcaster_id.to_string().parse::<u64>().unwrap();
                 let socket = open_websocket(oauth_token, client, broadcaster_id, connect_url);
             }
         }
