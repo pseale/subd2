@@ -1,3 +1,4 @@
+use eyre::Context;
 use reqwest::Client as ReqwestClient;
 use reqwest::Url;
 use tokio_tungstenite::tungstenite;
@@ -14,19 +15,20 @@ async fn open_websocket(
     tokio_tungstenite::WebSocketStream<tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>>,
     eyre::Error,
 > {
-    unimplemented!();
-    //       let config = tungstenite::protocol::WebSocketConfig {
-    //             max_send_queue: None,
-    //             max_message_size: Some(64 << 20), // 64 MiB
-    //             max_frame_size: Some(16 << 20),   // 16 MiB
-    //             accept_unmasked_frames: false,
-    //         };
-    //         let (socket, _) =
-    //             tokio_tungstenite::connect_async_with_config(&self.connect_url, Some(config))
-    //                 .await
-    //                 .context("Can't connect")?;
-    //
-    //         Ok(socket)
+    let config = tungstenite::protocol::WebSocketConfig {
+        max_send_queue: None,
+        max_message_size: Some(64 << 20), // 64 MiB
+        max_frame_size: Some(16 << 20),   // 16 MiB
+        accept_unmasked_frames: false,
+    };
+    let (socket, _) =
+        tokio_tungstenite::connect_async_with_config(connect_url, Some(config))
+            .await
+            .context("Can't connect")?;
+
+    Ok(socket)
+
+    // unimplemented!();
 }
 #[tokio::main]
 async fn main() {
