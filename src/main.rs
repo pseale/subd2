@@ -21,10 +21,9 @@ async fn open_websocket(
         max_frame_size: Some(16 << 20),   // 16 MiB
         accept_unmasked_frames: false,
     };
-    let (socket, _) =
-        tokio_tungstenite::connect_async_with_config(connect_url, Some(config))
-            .await
-            .context("Can't connect")?;
+    let (socket, _) = tokio_tungstenite::connect_async_with_config(connect_url, Some(config))
+        .await
+        .context("Can't connect")?;
 
     Ok(socket)
 
