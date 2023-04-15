@@ -2,6 +2,7 @@ use eyre::Context;
 use reqwest::Client as ReqwestClient;
 use reqwest::Url;
 use tokio_tungstenite::tungstenite;
+use tungstenite::protocol::WebSocketConfig;
 use twitch_api::helix::HelixClient;
 use twitch_api::twitch_oauth2::{AccessToken, UserToken};
 
@@ -14,7 +15,7 @@ async fn open_websocket(
     tokio_tungstenite::WebSocketStream<tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>>,
     eyre::Error,
 > {
-    let config = tungstenite::protocol::WebSocketConfig {
+    let config = WebSocketConfig {
         max_send_queue: None,
         max_message_size: Some(64 << 20), // 64 MiB
         max_frame_size: Some(16 << 20),   // 16 MiB
