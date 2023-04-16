@@ -7,9 +7,6 @@ use twitch_api::helix::HelixClient;
 use twitch_api::twitch_oauth2::{AccessToken, UserToken};
 
 async fn open_websocket(
-    oauth_token: String,
-    client: HelixClient<'static, ReqwestClient>,
-    broadcaster_id: u64,
     connect_url: Url,
 ) -> Result<
     tokio_tungstenite::WebSocketStream<tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>>,
@@ -26,8 +23,6 @@ async fn open_websocket(
         .context("Can't connect")?;
 
     Ok(socket)
-
-    // unimplemented!();
 }
 #[tokio::main]
 async fn main() {
@@ -50,8 +45,7 @@ async fn main() {
                 println!("Channel: {:?}", channel);
 
                 let connect_url = twitch_api::TWITCH_EVENTSUB_WEBSOCKET_URL.clone();
-                let broadcaster_id = channel.broadcaster_id.to_string().parse::<u64>().unwrap();
-                let socket = open_websocket(oauth_token, client, broadcaster_id, connect_url).await;
+                let socket = open_websocket(connect_url).await;
             }
         }
         Err(err) => panic!("{}", err),
