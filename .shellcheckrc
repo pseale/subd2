@@ -1,0 +1,5 @@
+# disable all warnings in .env.template
+disable=SC2148,SC2034
+
+# "'cat filename | grep etc | cut' is inefficient" - yes, I'm ok with this; this is acceptable
+disable=SC2002
