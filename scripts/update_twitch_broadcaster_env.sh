@@ -22,5 +22,5 @@ scopes="chat:edit channel:read:subscriptions channel:read:redemptions"
 twitchclioutput=$(twitch token -u --scopes "$scopes" 2>&1)
 useraccesstoken=$(echo "$twitchclioutput" | grep "User Access Token" | cut -d " " -f 6)
 
-sed -i .env  -e  "s/^.*SUBD2_BOT_USERNAME=.*$/SUBD2_BOT_USERNAME=$twitchusernamelowercase/"
-sed -i .env  -e  "s/^.*SUBD2_BOT_OAUTH_TOKEN=.*$/SUBD2_BOT_OAUTH_TOKEN=$useraccesstoken/"
+sed -i .env  -e  "s/^.*SUBD2_BROADCASTER_USERNAME=.*$/SUBD2_BROADCASTER_USERNAME=$twitchusernamelowercase/"
+sed -i .env  -e  "s/^.*SUBD2_BROADCASTER_OAUTH_TOKEN=.*$/SUBD2_BROADCASTER_OAUTH_TOKEN=$useraccesstoken/"
