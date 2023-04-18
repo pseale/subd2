@@ -24,8 +24,8 @@ async fn open_websocket(
 
     Ok(socket)
 }
-#[tokio::main]
-async fn main() {
+
+async fn run() -> Result<(), String> {
     let oauth_token = dotenv::var("SUBD2_OAUTH_TOKEN").unwrap();
     let client: HelixClient<ReqwestClient> = HelixClient::default();
     match UserToken::from_existing(
@@ -50,4 +50,10 @@ async fn main() {
         }
         Err(err) => panic!("{}", err),
     }
+
+    Ok(())
+}
+#[tokio::main]
+async fn main() {
+    run().await.expect("program runs");
 }
