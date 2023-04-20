@@ -26,7 +26,7 @@ async fn open_websocket(
 }
 #[tokio::main]
 async fn main() {
-    let oauth_token = dotenv::var("SUBD2_OAUTH_TOKEN").unwrap();
+    let oauth_token = dotenv::var("SUBD2_BROADCASTER_OAUTH_TOKEN").unwrap();
     let client: HelixClient<ReqwestClient> = HelixClient::default();
     match UserToken::from_existing(
         &client,
@@ -39,7 +39,7 @@ async fn main() {
         Ok(response) => {
             let token = response;
             if let Ok(Some(channel)) = client
-                .get_channel_from_login(&dotenv::var("SUBD2_USERNAME").unwrap(), &token)
+                .get_channel_from_login(&dotenv::var("SUBD2_BROADCASTER_USERNAME").unwrap(), &token)
                 .await
             {
                 println!("Channel: {:?}", channel);
